@@ -129,8 +129,19 @@ kube-public       Active   7h26m
 kube-system       Active   7h26m
 monitoring        Active   4s
 
--------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------
+8.	Setup Prometheus (in monitoring namespace) for gathering host/container metrics along with health check status of the application. 
 
-
+samdhina_x11@cloudshell:~ (smooth-loop-245005)$ kubectl --namespace monitoring get pods -w
+NAME                                                     READY   STATUS    RESTARTS   AGE
+alertmanager-prometheus-prometheus-oper-alertmanager-0   2/2     Running   0          32s
+prometheus-grafana-57b59fd65-nvvr6                       2/2     Running   0          40s
+prometheus-kube-state-metrics-5f6bff6d85-gnz56           1/1     Running   0          40s
+prometheus-prometheus-node-exporter-m2fx4                1/1     Running   0          40s
+prometheus-prometheus-node-exporter-n89gv                1/1     Running   0          39s
+prometheus-prometheus-node-exporter-qnq75                1/1     Running   0          39s
+prometheus-prometheus-oper-operator-fb5cf5f67-lchz5      1/1     Running   0          40s
+prometheus-prometheus-prometheus-oper-prometheus-0       3/3     Running   1          25s
+------------------------------------------------------------------------------------------------------------------------------------
 
 
