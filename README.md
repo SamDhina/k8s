@@ -132,16 +132,35 @@ monitoring        Active   4s
 -----------------------------------------------------------------------------------------------------------------------------------
 8.	Setup Prometheus (in monitoring namespace) for gathering host/container metrics along with health check status of the application. 
 
-samdhina_x11@cloudshell:~ (smooth-loop-245005)$ kubectl --namespace monitoring get pods -w
-NAME                                                     READY   STATUS    RESTARTS   AGE
-alertmanager-prometheus-prometheus-oper-alertmanager-0   2/2     Running   0          32s
-prometheus-grafana-57b59fd65-nvvr6                       2/2     Running   0          40s
-prometheus-kube-state-metrics-5f6bff6d85-gnz56           1/1     Running   0          40s
-prometheus-prometheus-node-exporter-m2fx4                1/1     Running   0          40s
-prometheus-prometheus-node-exporter-n89gv                1/1     Running   0          39s
-prometheus-prometheus-node-exporter-qnq75                1/1     Running   0          39s
-prometheus-prometheus-oper-operator-fb5cf5f67-lchz5      1/1     Running   0          40s
-prometheus-prometheus-prometheus-oper-prometheus-0       3/3     Running   1          25s
+Prometheus pod and grafana pods have been created in monitoring namespace with alll the metrics included launched the prometheus dashboard outside the GCP console .
+
+
+
+samdhina_x11@cloudshell:~ (smooth-loop-245005)$ kubectl get pods -n monitoring
+NAME                                   READY   STATUS    RESTARTS   AGE
+alertmanager-main-0                    2/2     Running   0          25s
+alertmanager-main-1                    2/2     Running   0          25s
+alertmanager-main-2                    2/2     Running   0          25s
+grafana-565dc89fbb-cjz9b               1/1     Running   0          25s
+kube-state-metrics-c8c5f4cc9-mmkfr     4/4     Running   0          25s
+node-exporter-4vb5h                    2/2     Running   0          25s
+node-exporter-ff9sp                    2/2     Running   0          25s
+prometheus-adapter-7c76f9d558-p8xbw    1/1     Running   0          25s
+prometheus-k8s-0                       3/3     Running   1          25s
+prometheus-k8s-1                       3/3     Running   1          25s
+prometheus-operator-7447bf4dcb-2ncld   1/1     Running   5          25s
+
+Note : Prometheus and Grafana Dashboard Screen shots have been attached in this Link for your reference .
+
+
+
 ------------------------------------------------------------------------------------------------------------------------------------
+9.	Create a dashboard using Grafana to help visualize the Node/Container/API Server etc. metrices from Prometheus server. Optionally create a custom dashboard on Grafana .
 
+Grafana Pod Created and Forwarded Port to access the dashboard from outside the GCP and attached Screen shot of GRAFANA custom dashboard and Nodes , API server , container metrics collected from prometheus server to grafana dashboard .
 
+samdhina_x11@cloudshell:~ (smooth-loop-245005)$ kubectl get pods -n monitoring
+grafana-565dc89fbb-cjz9b               1/1     Running   0          25s
+
+Note : Grafana pod deployment YAML script have been uploaded in this Link for your reference .
+------------------------------------------------------------------------------------------------------------------------------------
