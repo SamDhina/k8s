@@ -164,3 +164,39 @@ grafana-565dc89fbb-cjz9b               1/1     Running   0          25s
 
 Note : Grafana pod deployment YAML script have been uploaded in this Link for your reference .
 ------------------------------------------------------------------------------------------------------------------------------------
+ 10.	Setup log analysis using Elasticsearch, Fluentd (or Filebeat), Kibana.
+ 
+ Below is the log analysis using Elasticsearch in kubernetes cluster :
+ 
+ Elasticsearch Pod o/p :
+ 
+ samdhina_x11@cloudshell:~/elastic (smooth-loop-245005)$ kubectl get pods |grep esnode
+esnode-0                                       1/1     Running   0          25m
+esnode-1                                       1/1     Running   0          24m
+samdhina_x11@cloudshell:~/elastic (smooth-loop-245005)$
+
+ES SVC o/p :
+
+samdhina_x11@cloudshell:~/elastic (smooth-loop-245005)$ kubectl get svc |grep elas
+elasticsearch-cluster         ClusterIP      None          <none>        9300/TCP       29m
+elasticsearch-loadbalancer    LoadBalancer   10.0.222.34   34.66.142.138     80:32316/TCP   27m
+samdhina_x11@cloudshell:~/elastic (smooth-loop-245005)$
+ 
+ Below is the sample Query the cluster for information about its nodes.
+ 
+ samdhina_x11@cloudshell:~/elastic (smooth-loop-245005)$ curl 127.0.0.1:32316/_cat/indices?v
+health status index       uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   bank        GVgO92fHSm6Tglm4I3lx5w   5   1       1000            0    950.1kb          475kb
+green  open   shakespeare Y86CuJF2QcO38NycTPzYBg   5   1     111396            0     46.6mb         23.4mb
+
+Checking the available indices:
+samdhina_x11@cloudshell:~/elastic (smooth-loop-245005)$ curl 127.0.0.1:32316/_cat/nodes?v
+ip         heap.percent ram.percent cpu load_1m load_5m load_15m node.role master name
+10.64.2.90           60          84  16    0.10    0.34     0.48 mdi       *      0snC6yZ
+10.64.2.91           64          84  16    0.10    0.34     0.48 mdi       -      WlqPHi6
+samdhina_x11@cloudshell:~/elastic (smooth-loop-245005)$
+
+Note : SVC , deployment config YAML files for elastic search have been uploaded for your reference 
+---------------------------------------------------------------------------------------------------------------------
+
+
