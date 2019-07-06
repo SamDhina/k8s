@@ -166,20 +166,23 @@ Note : Grafana pod deployment YAML script have been uploaded in this Link for yo
 ------------------------------------------------------------------------------------------------------------------------------------
  10.	Setup log analysis using Elasticsearch, Fluentd (or Filebeat), Kibana.
  
- Below is the log analysis using Elasticsearch in kubernetes cluster :
+ Below is the log analysis using Elasticsearch in kubernetes cluster deployed using helm charts :
  
  Elasticsearch Pod o/p :
  
- samdhina_x11@cloudshell:~/elastic (smooth-loop-245005)$ kubectl get pods |grep esnode
-esnode-0                                       1/1     Running   0          25m
-esnode-1                                       1/1     Running   0          24m
+ samdhina_x11@cloudshell:~ (smooth-loop-245005)$ kubectl get pods
+NAME                                           READY   STATUS    RESTARTS   AGE
+elasticsearch-master-0                         1/1     Running   0          64m
+elasticsearch-master-1                         1/1     Running   0          64m
+elasticsearch-master-2                         1/1     Running   0          64m
 samdhina_x11@cloudshell:~/elastic (smooth-loop-245005)$
 
 ES SVC o/p :
 
-samdhina_x11@cloudshell:~/elastic (smooth-loop-245005)$ kubectl get svc |grep elas
-elasticsearch-cluster         ClusterIP      None          <none>        9300/TCP       29m
-elasticsearch-loadbalancer    LoadBalancer   10.0.222.34   34.66.142.138     80:32316/TCP   27m
+samdhina_x11@cloudshell:~ (smooth-loop-245005)$ kubectl get svc
+NAME                            TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)             AGE
+elasticsearch-master            ClusterIP   10.0.27.14   <none>        9200/TCP,9300/TCP   67m
+elasticsearch-master-headless   ClusterIP   None         <none>        9200/TCP,9300/TCP   67m
 samdhina_x11@cloudshell:~/elastic (smooth-loop-245005)$
  
  Below is the sample Query the cluster for information about its nodes.
@@ -196,6 +199,7 @@ ip         heap.percent ram.percent cpu load_1m load_5m load_15m node.role maste
 10.64.2.91           64          84  16    0.10    0.34     0.48 mdi       -      WlqPHi6
 samdhina_x11@cloudshell:~/elastic (smooth-loop-245005)$
 
+Filebeat Pods 
 samdhina_x11@cloudshell:~ (smooth-loop-245005)$ kubectl get pods --namespace=default -l app=filebeat-filebeat -w
 NAME                      READY   STATUS    RESTARTS   AGE
 filebeat-filebeat-px4wm   1/1     Running   0          14m
