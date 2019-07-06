@@ -201,6 +201,25 @@ NAME                      READY   STATUS    RESTARTS   AGE
 filebeat-filebeat-px4wm   1/1     Running   0          14m
 filebeat-filebeat-rsbfp   1/1     Running   0          14m
 
+Elastic serach log analysis output :
+
+samdhina_x11@cloudshell:~ (smooth-loop-245005)$ curl http://localhost:9200/_cat/indices
+green  open .monitoring-es-7-2019.07.04      _HhmYV_LQnKNEZAyGmKawA 1 1 23976  20100    30mb    15mb
+green  open filebeat-7.2.0-2019.07.06-000001 u6gm3JbjT1OALk8Yh8oDrg 1 1  3350      0   2.4mb   1.2mb
+green  open .kibana_1                        C1HNImprQWC1AxZFPlIyWg 1 1    14      2 865.1kb 432.5kb
+green  open kibana_sample_data_ecommerce     SyBZbK--T7uadGQTmBDFow 1 1  3500      0   7.3mb   3.6mb
+green  open kibana_sample_data_logs          QM4bBlq3TMK3F-z7-lzaZg 1 1 10500      0  16.6mb   8.5mb
+green  open .monitoring-kibana-7-2019.07.05  qfv8-cZESOm25W3HVw3T8w 1 1  8620      0   4.1mb     2mb
+green  open .kibana_task_manager             1ZZwNfIzSHykxMsoMM2UWQ 1 1     2      0  25.5kb  12.7kb
+green  open .monitoring-es-7-2019.07.05      BpEnaM_dSgCSJVYqmbIHLw 1 1 94417 105120 133.6mb  66.8mb
+green  open .monitoring-kibana-7-2019.07.04  eZU-fc1rT0Sj_6SwKnz6AQ 1 1  1891      0     1mb 530.9kb
+green  open .monitoring-kibana-7-2019.07.06  ffCsK7seRsS6hTS6gbPc1g 1 1  4033      0     2mb     1mb
+yellow open .monitoring-es-7-2019.07.06      yjgEEB-LTz6f-w92b4fSkQ 1 1 12501      0  11.7mb  11.7mb
+samdhina_x11@cloudshell:~ (smooth-loop-245005)$
+samdhina_x11@cloudshell:~ (smooth-loop-245005)$
+
+
+
 Note : SVC , deployment config YAML files for elastic search have been uploaded for your reference 
 
 
