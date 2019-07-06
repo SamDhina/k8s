@@ -196,7 +196,14 @@ ip         heap.percent ram.percent cpu load_1m load_5m load_15m node.role maste
 10.64.2.91           64          84  16    0.10    0.34     0.48 mdi       -      WlqPHi6
 samdhina_x11@cloudshell:~/elastic (smooth-loop-245005)$
 
+samdhina_x11@cloudshell:~ (smooth-loop-245005)$ kubectl get pods --namespace=default -l app=filebeat-filebeat -w
+NAME                      READY   STATUS    RESTARTS   AGE
+filebeat-filebeat-px4wm   1/1     Running   0          14m
+filebeat-filebeat-rsbfp   1/1     Running   0          14m
+
 Note : SVC , deployment config YAML files for elastic search have been uploaded for your reference 
+
+
 ---------------------------------------------------------------------------------------------------------------------
 
 
