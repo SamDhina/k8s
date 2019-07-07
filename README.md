@@ -230,11 +230,36 @@ Note : SVC , deployment config YAML files for elastic search have been uploaded 
 ---------------------------------------------------------------------------------------------------------------------
 11.	Demonstrate Blue/Green and Canary deployment for the application (For e.g. Change the background color or font in the new version etc.,)
 
+Below is the sample app deployed used blue/green deployment startegic 
 
+Version 1 deployment 
 samdhina_x11@cloudshell:~/k8s-canary-deployment-guide (smooth-loop-245005)$ kubectl get pods -n canary
 NAME                        READY   STATUS    RESTARTS   AGE
 my-app-v1-bb9cc7597-hj2qd   1/1     Running   0          2m56s
 my-app-v1-bb9cc7597-jlqtq   1/1     Running   0          2m56s
 my-app-v1-bb9cc7597-q2d4c   1/1     Running   0          2m56s
 samdhina_x11@cloudshell:~/k8s-canary-deployment-guide (smooth-loop-245005)$
+
+Version 2 Deployment 
+
+Every 2.0s: kubectl get po -n canary                                                                                                                           cs-6000-devshell-vm-ee25a6a3-0d53-4079-849f-b7bfc455cbb3: Sun Jul  7 11:04:16 2019
+
+NAME                        READY   STATUS    RESTARTS   AGE
+my-app-v1-bb9cc7597-hj2qd   1/1     Running   0          48m
+my-app-v1-bb9cc7597-jlqtq   1/1     Running   0          48m
+my-app-v1-bb9cc7597-q2d4c   1/1     Running   0          48m
+my-app-v2-db47b56bf-2bx66   1/1     Running   0          32m  
+my-app-v2-db47b56bf-76qdd   1/1     Running   0          32m  
+my-app-v2-db47b56bf-tn24r   1/1     Running   0          32m  
+
+
+SVC :
+
+
+samdhina_x11@cloudshell:~/blue-gree (smooth-loop-245005)$ kubectl get svc -n canary
+NAME     TYPE       CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
+my-app   NodePort   10.0.68.25   <none>        80:30492/TCP   47m
+
+Note : Yaml file for this deployment have been attached for your reference with screenshot of version 1 to v2 rollout .
+------------------------------------------------------------------------------------------------------------------------------------
 
