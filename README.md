@@ -12,13 +12,13 @@ kubernetes-minion-group-w65t   Ready                      <none>   31m   v1.15.0
 ------------------------------------------------------------------------------------------------------------------------------------  
 2.	Create a CI/CD pipeline using Jenkins (or a CI tool of your choice) outside Kubernetes cluster (not as a pod inside 1 cluster).
 
-Jenkins created with CI pipeline outside the kubernetes :
+Jenkins created with CI pipeline outside the kubernetes cluster and it is deployed inside the GCP as separate instance .
 
-attached Jenkins dashboard Screen shot for reference .
+Note : attached Jenkins dashboard and Continous deployment Screen shot from github for reference .
 --------------------------------------------------------------------------------------------------------------------------------
   3.	Create a development namespace.
   
-  o/p :
+  o/p : Namespace created 
   
   samdhina_x11@cloudshell:~/kubernetes/cluster (smooth-loop-245005)$ kubectl get namespaces
 NAME              STATUS   AGE
