@@ -228,5 +228,13 @@ Note : SVC , deployment config YAML files for elastic search have been uploaded 
 
 
 ---------------------------------------------------------------------------------------------------------------------
+11.	Demonstrate Blue/Green and Canary deployment for the application (For e.g. Change the background color or font in the new version etc.,)
 
+
+samdhina_x11@cloudshell:~/k8s-canary-deployment-guide (smooth-loop-245005)$ kubectl get pods -n canary
+NAME                        READY   STATUS    RESTARTS   AGE
+my-app-v1-bb9cc7597-hj2qd   1/1     Running   0          2m56s
+my-app-v1-bb9cc7597-jlqtq   1/1     Running   0          2m56s
+my-app-v1-bb9cc7597-q2d4c   1/1     Running   0          2m56s
+samdhina_x11@cloudshell:~/k8s-canary-deployment-guide (smooth-loop-245005)$
 
