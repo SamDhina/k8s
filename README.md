@@ -10,6 +10,12 @@ kubernetes-minion-group-8t0k   Ready                      <none>   31m   v1.15.0
 kubernetes-minion-group-w65t   Ready                      <none>   31m   v1.15.0
   
 ------------------------------------------------------------------------------------------------------------------------------------  
+2.	Create a CI/CD pipeline using Jenkins (or a CI tool of your choice) outside Kubernetes cluster (not as a pod inside 1 cluster).
+
+Jenkins created with CI pipeline outside the kubernetes :
+
+attached Jenkins dashboard Screen shot for reference .
+--------------------------------------------------------------------------------------------------------------------------------
   3.	Create a development namespace.
   
   o/p :
